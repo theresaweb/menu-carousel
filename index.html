@@ -33,37 +33,44 @@ body {
 #main {
     width: 70%;
     margin: 0 auto;
+} 
+#carousel {
+  background: #eee;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 0 30px;
 }
-.carousel {
-    background: #eee;
-    display:flex;
-    position: relative;
+
+#leftArrow {
+  left:0;
+  position:absolute;
 }
-.arrow {
-    font-size: 4em;
-    font-weight: bold;
-    cursor: pointer;
-    line-height: 2em;
+#rightArrow {
+  right: 0;
+  position: absolute;
 }
-.carousel ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start;
-    list-style: none;
-    overflow: hidden;
-    position: relative;
+#carouselList {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 #carouselList li {
-    flex: 0 1 auto;
+  padding: 10px;
 }
+.arrow {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
 #carouselList li a {
-    padding: 2rem;
     white-space:nowrap;
-    display: flex;
-    align-items: flex-start;
     color: #333;
-    line-height: 2em;
+    /* line-height: 2em; */
     font-weight: bold;
     font-size: 1.6rem;
     text-decoration: none;
@@ -76,156 +83,162 @@ body {
 </head>
 <body>
 <div id="main">
-  <div class="carousel" id="carousel">
+  <div id="carousel">
     <div id="leftArrow" class="arrow"><</div>
-      <ul id="carouselList">
-        <li>
-          <a href="#">
-          Cherry Blosson
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Tulip
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Forsythia
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Apple Tree
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Lamb's Ear
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Rose
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Begonia
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Cosmos
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Salvia
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Sweet William
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Dahlia
-          </a>
-        </li>
-        <li>
-          <a href="#">
-          Marigold
-          </a>
-        </li>
-      </ul>
     <div id="rightArrow" class="arrow">></div>
+    <ul id="carouselList">
+      <li>
+        <a href="#">
+        Cherry Blosson
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Tulip
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Forsythia
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Apple Tree
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Lamb's Ear
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Rose
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Begonia
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Cosmos
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Salvia
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Sweet William
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Dahlia
+        </a>
+      </li>
+      <li>
+        <a href="#">
+        Marigold
+        </a>
+      </li>
+    </ul>
+    
   </div>
 </div>
 
 <script>
-var carousel = document.getElementById('carousel');
-carousel.style.right = 0;
+var carousel = document.getElementById('carouselList');
 var carouselWidth = document.getElementById('carousel').scrollWidth;
 var ulWidth = document.getElementById('carouselList').scrollWidth;
+var curRight = 0;
 console.log("carouselWidth",carouselWidth);
 console.log("ulWidth", ulWidth);
 
-// var carouselMove = function(){
-// setInterval(carouselMove, 5000);
-//   if ((ulWidth - curRight) > 0) {
-//     console.log("more ul");
-//     let move = (curRight + carouselWidth)
-//     console.log("move", move)
-//     //carousel.style.right =  move + 'px';
-//     curRight += move;
-//     console.log("curRight updated", curRight)
-//   } else {
-//     clearInterval(carouselMove);
-//     return false;
-//   }
-// return false;
-// }
-//
-// let curRight = parseInt(carousel.style.right);
-// carouselMove();
-
-
-
-
-// setInterval(function(){
-//
-//   console.log("carouselWidth",carouselWidth)
-//   if ((ulWidth - curRight) > 0) {
-//     console.log("more ul");
-//     let move = (curRight + carouselWidth)
-//     console.log("move", move)
-//     carousel.style.right =  move + 'px';
-//     curRight += move;
-//     console.log("curRight updated", curRight)
-//   } else {
-//     stop();
-//   }
-// }, 2000);
-// function stop(){
-//   console.log("stop")
-//   clearInterval();
-// }
 document.getElementById("rightArrow").addEventListener("click", function( event ) {
-  // move menu to the right
+  if ((ulWidth - curRight) > 0) {
+    let move = (curRight + carouselWidth)
+    console.log("move", move)
+    carousel.style.right =  move + 'px';
+    curRight += move;
+    console.log("curRight updated", curRight)
+  }
 }, false);
 document.getElementById("leftArrow").addEventListener("click", function( event ) {
   // move menu to the left
 }, false);
 
-/*
+function menuScroll(width, fullWidth, isFirefox) {
+	var scrollControlRight = '.ih-scroll-control.ih-right';
+	var scrollControlLeft = '.ih-scroll-control.ih-left';
+	var containerUl = '.ih-news-filters ul';
+	var scrollDuration = 500;
 
-(function ( $ ) {
+	var theMenuWidth = width;
+	var newsScrollWidth = 0;
+	var newOffset = 0;
+	newsScrollWidth = theMenuWidth - 254;
+	// if there is enough width without scroll then hide left and right arrows
+	if (fullWidth <= theMenuWidth) {
+		$(scrollControlRight).addClass('ih-hide');
+		$(scrollControlLeft).addClass('ih-hide');
+	}
+	var currentLeftPosition = $.isNumeric(parseInt($(containerUl).css('left'))) ? parseInt($(containerUl).css('left')) : 0;
+	var currentLeftOffset = Math.abs(currentLeftPosition);
+	// if there is more items to the right, show right arrow
+	if ((currentLeftOffset + theMenuWidth) <= fullWidth) {
+		$(scrollControlRight).removeClass('ih-hide');
+	}
+	// if there are more items to the left show left arrow
+	if (currentLeftOffset > 0) {
+		$(scrollControlLeft).removeClass('ih-hide');
+	}	
+	$(scrollControlRight).unbind().click(function() {
+		currentLeftPosition = $.isNumeric(parseInt($(containerUl).css('left'))) ? parseInt($(containerUl).css('left')) : 0;
+		currentLeftOffset = Math.abs(currentLeftPosition);
+		newOffset = currentLeftOffset + newsScrollWidth;
+		var amountOfListShowing = fullWidth - newOffset;
+		if (amountOfListShowing < theMenuWidth) {
+			var extraRightSpace = theMenuWidth - amountOfListShowing;
+			newOffset = newOffset - extraRightSpace
+		}
+		$(containerUl).stop().animate({
+			"left": newOffset * -1
+		}, scrollDuration);
+		// after clicking right, always show left arrow
+		$(scrollControlLeft).removeClass('ih-hide');
+		//check if you are at right end of the scroll
+		if ((newOffset + theMenuWidth) >= fullWidth) {
+			$(scrollControlRight).addClass('ih-hide');
+		}
+	})
+	$(scrollControlLeft).unbind().click(function() {
+		currentLeftPosition = $.isNumeric(parseInt($(containerUl).css('left'))) ? parseInt($(containerUl).css('left')) : 0;
+		currentLeftOffset = Math.abs(currentLeftPosition);
+		// make sure you can't scroll past left:0
+		newOffset = ((currentLeftOffset - newsScrollWidth) * -1) > 0 ? 0 : currentLeftOffset - newsScrollWidth;
+		$(containerUl).stop().animate({
+			"left": newOffset * -1
+		}, scrollDuration);
+		//check if you are at beginning of the scroll
+		if (newOffset === 0) {
+			$(scrollControlLeft).addClass('ih-hide');
+		} else {
+			$(scrollControlLeft).removeClass('ih-hide');
+		}
+		if ((newOffset + theMenuWidth) >= fullWidth) {
+			$(scrollControlRight).addClass('ih-hide');
+		} else {
+			$(scrollControlRight).removeClass('ih-hide');
+		}
 
-    $.fn.menuScroll = function( options ) {
-
-        // This is the easiest way to have default options.
-        var settings = $.extend({
-            // These are the defaults.
-            color: "#556b2f",
-            backgroundColor: "white"
-        }, options );
-
-        // Greenify the collection based on the settings variable.
-        return this.css({
-            color: settings.color,
-            backgroundColor: settings.backgroundColor
-        });
-
-    };
-
-}( jQuery ));
-
-//Example usage:
-$( "div" ).greenify({
-    color: "orange"
-}); */
+	})
+}
 </script>
 </body>
 </html>
