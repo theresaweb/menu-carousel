@@ -20,7 +20,7 @@ adjust first and last section to be flush against the side
 
 Consider Performance:
 https://www.sitepoint.com/10-ways-minimize-reflows-improve-performance/
-
+https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements
 -->
 <style>
 * {
@@ -39,7 +39,6 @@ body {
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 0 30px;
 }
 
 #leftArrow {
@@ -50,27 +49,32 @@ body {
   right: 0;
   position: absolute;
 }
+.arrow {
+  font-weight: bold;
+  cursor: pointer;
+  height: 100%;
+  padding: 0 10px;
+  background: white;
+}
+.arrowImg {
+  position:relative;
+  top:50%;
+  transform: translateY(-50%);
+}
 #carouselList {
   display: flex;
   flex-wrap: nowrap;
   list-style: none;
   margin: 0;
-  padding: 0;
-  overflow: hidden;
+  padding: 0 20px;
+  position: relative;
 }
 #carouselList li {
-  padding: 10px;
+  padding: 10px 20px;
 }
-.arrow {
-    font-weight: bold;
-    cursor: pointer;
-}
-
-
 #carouselList li a {
     white-space:nowrap;
     color: #333;
-    /* line-height: 2em; */
     font-weight: bold;
     font-size: 1.6rem;
     text-decoration: none;
@@ -84,8 +88,8 @@ body {
 <body>
 <div id="main">
   <div id="carousel">
-    <div id="leftArrow" class="arrow"><</div>
-    <div id="rightArrow" class="arrow">></div>
+    <div id="leftArrow" class="arrow"><div class="arrowImg"><</div></div>
+    <div id="rightArrow" class="arrow"><div class="arrowImg">></div></div>
     <ul id="carouselList">
       <li>
         <a href="#">
