@@ -7,10 +7,10 @@ Requirements:
 A  unordered list should be displayed horizontally within a responsive width
 The items in the unordered list are of varying widths
 the "next" group of items should include and partially visible items in the "current" view
-When the first item in the unordered list is visible it should be flush against the left side of the box 
+When the first item in the unordered list is visible it should be flush against the left side of the box
 and the left arrow should not be visible
 When the last item in the unordered list is visible, the right arrow should not be visible
-?? should it? When the last item in the unordered list is visible,  it should be flush against the right side of the box 
+?? should it? When the last item in the unordered list is visible,  it should be flush against the right side of the box
 The unordered list should maintain it's position when the box resizes ??
 
 Method:
@@ -34,159 +34,192 @@ body {
     width: 70%;
     margin: 0 auto;
 }
-.mainNav {
+.carousel {
     background: #eee;
     display:flex;
-} 
+    position: relative;
+}
 .arrow {
     font-size: 4em;
     font-weight: bold;
     cursor: pointer;
+    line-height: 2em;
 }
-.mainNav ul {
+.carousel ul {
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: flex-start;
     list-style: none;
     overflow: hidden;
+    position: relative;
 }
-#mainNavList li {
+#carouselList li {
     flex: 0 1 auto;
 }
-#mainNavList li a {
+#carouselList li a {
     padding: 2rem;
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-decoration: none;
     white-space:nowrap;
     display: flex;
     align-items: flex-start;
     color: #333;
+    line-height: 2em;
+    font-weight: bold;
+    font-size: 1.6rem;
+    text-decoration: none;
 }
-#mainNavList li a:hover {
+#carouselList li a:hover {
     background: rgb(90, 161, 140);
     color: black;
 }
-
-
 </style>
 </head>
 <body>
-<div style="float:left;display:none">
-<div class="sweep">Sweep to the right</div>
-</div>
-<div style="display:none">
-<div class="ih-carousel--meta">
-    <div class="ih-carousel--title">HCH_Family and Youth Advisory Councils</div>
-    <a class="ih-read-more">Read More 
-        <img src="/SiteAssets/news-assets/images/caret-right-white.svg" alt="Icon Caret - Right">
-    </a>
-</div>
-</div>
-
 <div id="main">
-    <nav role='navigation' class="mainNav" id="mainNav">
-        <div id="leftArrow" class="arrow"><</div>
-        <ul id="mainNavList">
-            <li>
-                <a href="#">
-                    Cherry Blosson
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Tulip
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Forsythia
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Apple Tree
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Lamb's Ear
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Rose
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Begonia
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Cosmos
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Salvia
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Sweet William
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Dahlia
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Marigold
-                </a>
-            </li>
-        </ul>
-        <div id="rightArrow" class="arrow">></div>
-    </nav>
+  <div class="carousel" id="carousel">
+    <div id="leftArrow" class="arrow"><</div>
+      <ul id="carouselList">
+        <li>
+          <a href="#">
+          Cherry Blosson
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Tulip
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Forsythia
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Apple Tree
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Lamb's Ear
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Rose
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Begonia
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Cosmos
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Salvia
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Sweet William
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Dahlia
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          Marigold
+          </a>
+        </li>
+      </ul>
+    <div id="rightArrow" class="arrow">></div>
+  </div>
 </div>
 
 <script>
-var menuWidth = document.getElementById('mainNav').scrollWidth;
-var ulWidth = document.getElementById('mainNavList').scrollWidth;
-console.log("menuwidth",menuWidth)
-console.log("ulWidth", ulWidth)
+var carousel = document.getElementById('carousel');
+carousel.style.right = 0;
+var carouselWidth = document.getElementById('carousel').scrollWidth;
+var ulWidth = document.getElementById('carouselList').scrollWidth;
+console.log("carouselWidth",carouselWidth);
+console.log("ulWidth", ulWidth);
+
+// var carouselMove = function(){
+// setInterval(carouselMove, 5000);
+//   if ((ulWidth - curRight) > 0) {
+//     console.log("more ul");
+//     let move = (curRight + carouselWidth)
+//     console.log("move", move)
+//     //carousel.style.right =  move + 'px';
+//     curRight += move;
+//     console.log("curRight updated", curRight)
+//   } else {
+//     clearInterval(carouselMove);
+//     return false;
+//   }
+// return false;
+// }
+//
+// let curRight = parseInt(carousel.style.right);
+// carouselMove();
+
+
+
+
+// setInterval(function(){
+//
+//   console.log("carouselWidth",carouselWidth)
+//   if ((ulWidth - curRight) > 0) {
+//     console.log("more ul");
+//     let move = (curRight + carouselWidth)
+//     console.log("move", move)
+//     carousel.style.right =  move + 'px';
+//     curRight += move;
+//     console.log("curRight updated", curRight)
+//   } else {
+//     stop();
+//   }
+// }, 2000);
+// function stop(){
+//   console.log("stop")
+//   clearInterval();
+// }
 document.getElementById("rightArrow").addEventListener("click", function( event ) {
-    // move menu to the right
-  }, false);
-  document.getElementById("leftArrow").addEventListener("click", function( event ) {
-    // move menu to the left
-  }, false);
+  // move menu to the right
+}, false);
+document.getElementById("leftArrow").addEventListener("click", function( event ) {
+  // move menu to the left
+}, false);
 
 /*
 
 (function ( $ ) {
- 
+
     $.fn.menuScroll = function( options ) {
- 
+
         // This is the easiest way to have default options.
         var settings = $.extend({
             // These are the defaults.
             color: "#556b2f",
             backgroundColor: "white"
         }, options );
- 
+
         // Greenify the collection based on the settings variable.
         return this.css({
             color: settings.color,
             backgroundColor: settings.backgroundColor
         });
- 
+
     };
- 
+
 }( jQuery ));
 
 //Example usage:
@@ -194,84 +227,5 @@ $( "div" ).greenify({
     color: "orange"
 }); */
 </script>
-<style>
-/* the style for the animation */
-/**************  class sweep animated underline *******************/
-div.sweep {
-  display:inline-block;
-  position:relative;
-  margin:0.4em;  padding:1em;
-  cursor:pointer;
-  background:#e1e1e1;  color:white; 
-  z-index:0;
-
-}
-div.sweep:before {
-  content: "";
-  position: absolute;
-  z-index:-1;
-  top: 0;  left: 0;  right: 0;  bottom: 0;
-  background: #2098d1;
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  transition: transform .3s ease-out;
-}
-div.sweep:hover:before{transform: scaleX(1);}
-/**************  animated underline *******************/
-/***************** from portal hp **********************/
-.ih-carousel--meta {
-    width: 258px;
-    background: #13658d;
-    position: absolute;
-    text-align: center;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.ih-carousel--title {
-    font-size: 24px;
-    color: #fff;
-    margin: 0 15px;
-    z-index: 10;
-    text-align: center;
-}
-a.ih-read-more, a:hover.ih-read-more, a:active.ih-read-more, a:visited.ih-read-more, a:link.ih-read-more {
-    font-size: 18px;
-    color: #fff;
-    text-decoration : none !important;
-    margin-top: 18px;
-    position: relative;
-    /* display:inline-block; */
-}
-a.ih-read-more:after {
-    height: 1px;
-    display: flex;
-    justify-content: center;
-    width: 110px;
-    margin: 0 auto;
-    content: "";
-    z-index: -1;
-    background: #fff;
-    transform: scaleX(0);
-    transform-origin: 0 50%;    
-    transition: transform .3s ease-out;
-}
-a.ih-read-more:hover:after {
-    transform: scaleX(1);
-    z-index: 1;
-}
-.ih-carousel--title:hover, .ih-read-more:hover {
-    cursor:pointer;
-}
-a.ih-read-more img, a:active.ih-read-more img, a:visited.ih-read-more img, a:hover.ih-read-more img, a:link.ih-read-more img {
-    display: inline;
-    height: 10px;
-    width: auto;
-}
-/**************** from portal hp ***********************/
-</style>
 </body>
 </html>
