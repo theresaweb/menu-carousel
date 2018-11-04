@@ -1,6 +1,6 @@
 This is a work in progress, an attempt to make a cleanly coded flexbox/javaScript carousel to be used with varying width menu items.
 
-   # Requirement:
+   # Requirements:
 * An unordered list should be displayed horizontally within a responsive width
 * The items in the unordered list are of varying widths
 * the "next" group of items should include and partially visible items in the "current" view
